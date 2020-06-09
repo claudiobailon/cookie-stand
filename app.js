@@ -1,25 +1,27 @@
 'use strict';
 
-var locationObject = {
+var locationSeattle = {
   minCustomers: 23,
   maxCustomers: 65,
   avgCookie: 6.3,
   getCustomersPerHour: function(){
     return Math.floor((Math.random() * (this.maxCustomers-this.minCustomers)) + this.minCustomers);
-  }, // used this page to figure out how to produce a random number https://www.w3schools.com/jsref/jsref_random.asp
+  }, // used this page to figure out how to produce a random number https://www.geeksforgeeks.org/how-to-generate-random-number-in-given-range-using-javascript/
 
  getSales: function (){
 
-  return Math.round(locationObject['getCustomersPerHour']() * locationObject.avgCookie)
+  return Math.round(locationSeattle['getCustomersPerHour']() * locationSeattle.avgCookie)
  },
-  salesData{}
-  
+ 
 
+ salesData: [this.avgCookie, this.getCustomersPerHour, this.getSales],
 };
 
-console.log('max customers: '+ locationObject['maxCustomers']);
-console.log('Avg Customers Per Hour: ' + locationObject['getCustomersPerHour']());
-console.log('Cookie Sales: ' + locationObject['getSales']())
-// console.log(locationObject['getRandomNumber'](locationObject.minCustomers, locationObject.maxCustomers));
+
+console.log('max customers: '+ locationSeattle['maxCustomers']);
+console.log('Avg Customers Per Hour: ' + locationSeattle['getCustomersPerHour']());
+console.log('Cookie Sales: ' + locationSeattle['getSales']())
+console.log(locationSeattle['salesData']);
+//console.log(locationSeattle['getRandomNumber'](locationSeattle.minCustomers, locationSeattle.maxCustomers));
 
 
