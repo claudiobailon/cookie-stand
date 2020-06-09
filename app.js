@@ -4,19 +4,22 @@ var locationObject = {
   minCustomers: 23,
   maxCustomers: 65,
   avgCookie: 6.3,
-  getRandomNumber: function(min,max){
-    var min = Math.ceil(min);
-    var max = Math.floor(max);
-    return Math.floor(Math.random() * (max-min + 1)) + min;
-  },// used this page to figure out how to produce a random number https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+  getCustomersPerHour: function(){
+    return Math.floor((Math.random() * (this.maxCustomers-this.minCustomers)) + this.minCustomers);
+  }, // used this page to figure out how to produce a random number https://www.w3schools.com/jsref/jsref_random.asp
 
- customersPerHour: function (){
+ getSales: function (){
 
- }
+  return Math.round(locationObject['getCustomersPerHour']() * locationObject.avgCookie)
+ },
+  salesData{}
+  
 
 };
 
 console.log('max customers: '+ locationObject['maxCustomers']);
+console.log('Avg Customers Per Hour: ' + locationObject['getCustomersPerHour']());
+console.log('Cookie Sales: ' + locationObject['getSales']())
+// console.log(locationObject['getRandomNumber'](locationObject.minCustomers, locationObject.maxCustomers));
 
-console.log(locationObject['getRandomNumber'](locationObject.minCustomers, locationObject.maxCustomers));
 
