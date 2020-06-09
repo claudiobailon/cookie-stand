@@ -1,6 +1,6 @@
 'use strict';
 
-var openHourTimes = ['7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm'];
+var openHourTimes = ['6am','7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 function getRandomNumber(min,max) {
   min = Math.ceil(min);
@@ -14,37 +14,35 @@ var seattleLocation = {
   avgCookie: 6.3,
   cookiesSold: [],
   getCustomersPerHour: function(){
-
     var customers = getRandomNumber(this.minCustomers, this.maxCustomers);
     return customers;
-
   },
-
-
   getCookieSales: function (){
-    var sales = this.getCustomersPerHour * this.avgCookie;
-    return Math.ceil(sales);
+    for(var i = 0; i < openHourTimes.length; i++){
+      var sales = Math.ceil(this.getCustomersPerHour() * this.avgCookie);
+      this.cookiesSold.push(sales);
+      console.log(sales);
+    }
   },
 
-salesData: [this.avgCookie, this.customersPerHour, this.getCookieSales],
+  // salesData: [this.avgCookie, this.customersPerHour, this.getCookieSales],
 
-renderToPage : function(){
-  
-  var parentUnorderedList = document.getElementById('seattle-ul');
-  var listItem = document.createElement('li');
-  listItem.textContent= seattleLocation.getCookieSales() ;//concatenate
-  parentUnorderedList.appendChild(listItem);
-  
+  renderToPage: function(){
+    var parentUnorderedList = document.getElementById('seattle-ul');
+    for(var i = 0; i < openHourTimes.length; i++){
+      var storeSales = document.createElement('li');
+      storeSales.textContent= openHourTimes[i] + ' : ' + this.cookiesSold[i] + ' cookies';
+      parentUnorderedList.appendChild(storeSales);
+    }
+
   }
 };
 
 seattleLocation.renderToPage();
-// console.log('max customers: '+ seattleLocation['maxCustomers']);
+//seattleLocation.getCookieSales();
+
 console.log('Avg Cookies per cutomer: ', seattleLocation.avgCookie);
-console.log('Avg Customers Per Hour: ' + seattleLocation['customersPerHour']);
-//console.log('sales: ',sales)
-console.log('Cookie Sales: ' + seattleLocation['getCookieSales']());
-console.log(seattleLocation.salesData);
-//console.log(seattleLocation['getRandomNumber'](seattleLocation.minCustomers, seattleLocation.maxCustomers));
+console.log('Avg Customers Per Hour: ' + seattleLocation['getCustomersPerHour'](this.sales));
+console.log('Cookie Sales: ' + seattleLocation['cookiesSold[0]']);
 
 
