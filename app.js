@@ -1,6 +1,6 @@
 'use strict';
 
-
+var openHourTimes = ['7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm'];
 
 function getRandomNumber(min,max) {
   min = Math.ceil(min);
@@ -12,27 +12,27 @@ var seattleLocation = {
   minCustomers: 23,
   maxCustomers: 65,
   avgCookie: 6.3,
-  customersPerHour = getRandomNumber(this.minCustomers, this.maxCustomers),
+  cookiesSold: [],
+  getCustomersPerHour: function(){
 
-  // getCustomersPerHour: function(){
+    var customers = getRandomNumber(this.minCustomers, this.maxCustomers);
+    return customers;
 
-  //   return Math.floor((Math.random() * (this.maxCustomers-this.minCustomers)) + this.minCustomers);
-  //   // used this page to figure out how to produce a random number https://www.geeksforgeeks.org/how-to-generate-random-number-in-given-range-using-javascript/
-  // }, 
-
- getSales: function (){
-  var sales = this.customersPerHour * this.avgCookie;
-  return Math.round(sales);
-  
   },
 
-salesData: [this.avgCookie, this.customersPerHour, this.getSales],
+
+  getCookieSales: function (){
+    var sales = this.getCustomersPerHour * this.avgCookie;
+    return Math.ceil(sales);
+  },
+
+salesData: [this.avgCookie, this.customersPerHour, this.getCookieSales],
 
 renderToPage : function(){
   
   var parentUnorderedList = document.getElementById('seattle-ul');
   var listItem = document.createElement('li');
-  listItem.textContent= seattleLocation.getSales() ;
+  listItem.textContent= seattleLocation.getCookieSales() ;//concatenate
   parentUnorderedList.appendChild(listItem);
   
   }
@@ -43,7 +43,7 @@ seattleLocation.renderToPage();
 console.log('Avg Cookies per cutomer: ', seattleLocation.avgCookie);
 console.log('Avg Customers Per Hour: ' + seattleLocation['customersPerHour']);
 //console.log('sales: ',sales)
-console.log('Cookie Sales: ' + seattleLocation['getSales']())
+console.log('Cookie Sales: ' + seattleLocation['getCookieSales']());
 console.log(seattleLocation.salesData);
 //console.log(seattleLocation['getRandomNumber'](seattleLocation.minCustomers, seattleLocation.maxCustomers));
 
