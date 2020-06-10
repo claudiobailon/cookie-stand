@@ -85,10 +85,33 @@ StoreLocation.prototype.renderLocationTable= renderLocationTable;
 //===================Constructed Locations========================
 
 var seattleLocation = new StoreLocation('Seattle', 'seattle-name-p', 23, 65, 6.3 );
+var tokyoLocation = new StoreLocation('Tokyo', 'tokyo-name-p', 3, 24, 1.2 );
+var dubaiLocation = new StoreLocation('Dubai', 'dubai-name-p', 11, 38, 3.7 );
+var parisLocation = new StoreLocation('Paris', 'paris-name-p', 20, 38, 2.3 );
+var limaLocation = new StoreLocation('Lima', 'lima-name-p', 2, 16, 4.6 );
 
-
+//=========================Invocations======================================
 seattleLocation.getCookieSales();
 seattleLocation.renderLocationTable();
+
+
+tokyoLocation.getCookieSales();
+tokyoLocation.renderLocationTable();
+
+
+dubaiLocation.getCookieSales();
+dubaiLocation.renderLocationTable();
+
+
+parisLocation.getCookieSales();
+parisLocation.renderLocationTable();
+
+
+limaLocation.getCookieSales();
+limaLocation.renderLocationTable();
+
+
+
 console.log('Made it to the bottom');
 // seattleLocation.renderStoreLocation;
 // seattleLocation.location();
