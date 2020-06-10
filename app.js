@@ -13,13 +13,11 @@ console.log('maybeeeeeeeee');
 function renderStoreLocation(){
 
   var parentUnorderedList = document.getElementById(this.id );
-  var storeSales = document.createElement('h2');
-  storeSales.textContent= this.name;
   parentUnorderedList.appendChild(storeSales);
 
   for(var i = 0; i < openHourTimes.length; i++){
 
-    storeSales = document.createElement('li');
+    var storeSales = document.createElement('li');
     storeSales.textContent = openHourTimes[i] + ' : ' + this.cookiesSold[i] + ' cookies';
     console.log('cookies: ',this.cookiesSold[0]);
     parentUnorderedList.appendChild(storeSales);
@@ -76,11 +74,11 @@ StoreLocation.prototype.getCookieSales = function (){
     var sales = Math.ceil(customers * this.avgCookie);
     this.cookiesSold.push(sales);
     this.dailyTotal = this.dailyTotal + sales;
-
+    console.log('Printed store',this.dailyTotal);
   }
 };
 
-StoreLocation.prototype.renderToPage= renderStoreLocation;
+StoreLocation.prototype.renderStoreLocation= renderStoreLocation;
 
 StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
@@ -90,8 +88,9 @@ var seattleLocation = new StoreLocation('Seattle', 'seattle-name-p', 23, 65, 6.3
 
 
 seattleLocation.getCookieSales();
+seattleLocation.renderStoreLocation;
 seattleLocation.renderLocationTable;
-console.log('for sure');
+console.log('Made it to the bottom');
 // seattleLocation.location();
 
 // console.log('Avg Cookies per cutomer: ', seattleLocation.avgCookie);
