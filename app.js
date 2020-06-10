@@ -35,9 +35,12 @@ var seattleLocation = {
     var parentUnorderedList = document.getElementById('seattle-ul');
     for(var i = 0; i < openHourTimes.length; i++){
       var storeSales = document.createElement('li');
-      storeSales.textContent= openHourTimes[i] + ' : ' + this.cookiesSold[i] + ' cookies';
+      storeSales.textContent = openHourTimes[i] + ' : ' + this.cookiesSold[i] + ' cookies';
       parentUnorderedList.appendChild(storeSales);
     }
+    storeSales = document.createElement('li');
+    storeSales.textContent = 'Total: ' + this.dailyTotal + ' cookies';
+    parentUnorderedList.appendChild(storeSales);
 
   },
   // getCookieSales: getCookieSales,
