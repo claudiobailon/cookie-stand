@@ -67,7 +67,7 @@ function renderHeader(){
     headerRow.appendChild(hourRow);
   }
   var cellDailyTotal = document.createElement('td');
-  cellDailyTotal.textContent = 'Daily Total';
+  cellDailyTotal.textContent = 'Daily Location Total';
   headerRow.appendChild(cellDailyTotal);
 
   table.appendChild(headerRow);
@@ -77,7 +77,7 @@ function renderFooter(){
   var table = document.getElementById('location-table');
   var footerRow = document.createElement('tr');
   var locationfooter = document.createElement('td');
-  locationfooter.textContent = 'Location';
+  locationfooter.textContent = 'Totals';
   footerRow.appendChild(locationfooter);
 
   for(var i = 0; i < openHourTimes.length; i++){
@@ -87,16 +87,15 @@ function renderFooter(){
     footerRow.appendChild(hourRow);
   }
   var cellDailyTotal = document.createElement('td');
-  cellDailyTotal.textContent = 'Daily Total';
+  cellDailyTotal.textContent = '';
   footerRow.appendChild(cellDailyTotal);
 
   table.appendChild(footerRow);
 }
 //========================Oject Location Constructor=======================
 
-function StoreLocation(name, id, minCustomers, maxCustomers,avgCookie){
+function StoreLocation(name, minCustomers, maxCustomers,avgCookie){
   this.name = name;
-  this.id = id;
   this.minCustomers = minCustomers;
   this.maxCustomers = maxCustomers;
   this.avgCookie = avgCookie;
@@ -121,37 +120,32 @@ StoreLocation.prototype.getCookieSales = function (){
 
 StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
-renderHeader();
-renderFooter();
 
 //===================Constructed Locations========================
 
-var seattleLocation = new StoreLocation('Seattle', 'seattle-name-p', 23, 65, 6.3 );
-var tokyoLocation = new StoreLocation('Tokyo', 'tokyo-name-p', 3, 24, 1.2 );
-var dubaiLocation = new StoreLocation('Dubai', 'dubai-name-p', 11, 38, 3.7 );
-var parisLocation = new StoreLocation('Paris', 'paris-name-p', 20, 38, 2.3 );
-var limaLocation = new StoreLocation('Lima', 'lima-name-p', 2, 16, 4.6 );
+var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
+var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
+var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
+var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
+var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
 
 //=========================Invocations======================================
+renderHeader();
+
 seattleLocation.getCookieSales();
 seattleLocation.renderLocationTable();
-
 
 tokyoLocation.getCookieSales();
 tokyoLocation.renderLocationTable();
 
-
 dubaiLocation.getCookieSales();
 dubaiLocation.renderLocationTable();
-
 
 parisLocation.getCookieSales();
 parisLocation.renderLocationTable();
 
-
 limaLocation.getCookieSales();
 limaLocation.renderLocationTable();
 
-
-
+renderFooter();
 //console.log('Made it to the bottom');
