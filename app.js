@@ -10,7 +10,7 @@ function getRandomNumber(min,max) {
 console.log('maybeeeeeeeee');
 //=======================Render Location to Page=================
 
-function renderLocation(){
+function renderStoreLocation(){
 
   var parentUnorderedList = document.getElementById(this.id );
   var storeSales = document.createElement('h2');
@@ -36,7 +36,7 @@ function renderLocation(){
 //========================Render Table to Page===================
 function renderLocationTable(){
   var table = document.getElementById('location-table');
-  var tablerow = document.createElement('tr');
+  var tableRow = document.createElement('tr');
   var tableCell = document.createElement('td');
 
   tableCell.textContent= this.name;
@@ -47,15 +47,17 @@ function renderLocationTable(){
     tableCell = document.createElement('td');
     tableCell.textContent= this.cookiesSold[i];
     tableRow.appendChild(tableCell);
+    console.log('I am hoping this woooooorks');
   }
 
   table.appendChild(tableRow);
+  console.log('working?????????');
 }
 
 
 //========================Oject Location Constructor=======================
 
-function Location(name, id, minCustomers, maxCustomers,avgCookie){
+function StoreLocation(name, id, minCustomers, maxCustomers,avgCookie){
   this.name = name;
   this.id = id;
   this.minCustomers = minCustomers;
@@ -67,7 +69,7 @@ function Location(name, id, minCustomers, maxCustomers,avgCookie){
 }
 
 //===================GetCookieSales Method===========
-Location.prototype.getCookieSales = function (){
+StoreLocation.prototype.getCookieSales = function (){
   for(var i = 0; i < openHourTimes.length; i++){
 
     var customers = getRandomNumber(this.minCustomers, this.maxCustomers);
@@ -78,13 +80,13 @@ Location.prototype.getCookieSales = function (){
   }
 };
 
-Location.prototype.renderToPage= renderLocation;
+StoreLocation.prototype.renderToPage= renderStoreLocation;
 
-Location.prototype.renderLocationTable= renderLocationTable;
+StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
 //===================Constructed Locations========================
 
-var seattleLocation = new Location('Seattle', 'seattle-name-p', 23, 65, 6.3 );
+var seattleLocation = new StoreLocation('Seattle', 'seattle-name-p', 23, 65, 6.3 );
 
 
 seattleLocation.getCookieSales();
