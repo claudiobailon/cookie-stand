@@ -45,11 +45,12 @@ function renderLocationTable(){
     tableCell = document.createElement('td');
     tableCell.textContent= this.cookiesSold[i];
     tableRow.appendChild(tableCell);
-    console.log('I am hoping this woooooorks',this.cookiesSold[i]);
   }
-
+  var cellDailyTotal = document.createElement('td');
+  cellDailyTotal.textContent=this.dailyTotal;
+  tableRow.appendChild(cellDailyTotal);
   table.appendChild(tableRow);
-  console.log('working?????????');
+  console.log('working?????????',this.dailyTotal);
 }
 
 
@@ -74,7 +75,7 @@ StoreLocation.prototype.getCookieSales = function (){
     var sales = Math.ceil(customers * this.avgCookie);
     this.cookiesSold.push(sales);
     this.dailyTotal = this.dailyTotal + sales;
-    console.log('Printed store',this.dailyTotal);
+    // console.log('Printed store',this.dailyTotal);
   }
 };
 
@@ -112,9 +113,4 @@ limaLocation.renderLocationTable();
 
 
 
-console.log('Made it to the bottom');
-// seattleLocation.renderStoreLocation;
-// seattleLocation.location();
-
-// console.log('Avg Cookies per cutomer: ', seattleLocation.avgCookie);
-// console.log('Avg Customers Per Hour: ' + seattleLocation.getCustomersPerHour(this.sales));
+//console.log('Made it to the bottom');
