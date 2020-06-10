@@ -53,17 +53,45 @@ function renderLocationTable(){
   console.log('working?????????',this.dailyTotal);
 }
 //=====================Render Header to Page=============
-function renderTableHeader(){
+function renderHeader(){
   var table = document.getElementById('location-table');
   var headerRow = document.createElement('tr');
   var locationHeader = document.createElement('td');
   locationHeader.textContent = 'Location';
   headerRow.appendChild(locationHeader);
 
+  for(var i = 0; i < openHourTimes.length; i++){
+
+    var hourRow = document.createElement('td');
+    hourRow.textContent= openHourTimes[i];
+    headerRow.appendChild(hourRow);
+  }
+  var cellDailyTotal = document.createElement('td');
+  cellDailyTotal.textContent = 'Daily Total';
+  headerRow.appendChild(cellDailyTotal);
 
   table.appendChild(headerRow);
 }
+//=====================Render Footer to Page=============
+function renderFooter(){
+  var table = document.getElementById('location-table');
+  var footerRow = document.createElement('tr');
+  var locationfooter = document.createElement('td');
+  locationfooter.textContent = 'Location';
+  footerRow.appendChild(locationfooter);
 
+  for(var i = 0; i < openHourTimes.length; i++){
+
+    var hourRow = document.createElement('td');
+    hourRow.textContent= openHourTimes[i];
+    footerRow.appendChild(hourRow);
+  }
+  var cellDailyTotal = document.createElement('td');
+  cellDailyTotal.textContent = 'Daily Total';
+  footerRow.appendChild(cellDailyTotal);
+
+  table.appendChild(footerRow);
+}
 //========================Oject Location Constructor=======================
 
 function StoreLocation(name, id, minCustomers, maxCustomers,avgCookie){
@@ -93,7 +121,8 @@ StoreLocation.prototype.getCookieSales = function (){
 
 StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
-renderTableHeader();
+renderHeader();
+renderFooter();
 
 //===================Constructed Locations========================
 
