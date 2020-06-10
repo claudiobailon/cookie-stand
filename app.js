@@ -52,7 +52,17 @@ function renderLocationTable(){
   table.appendChild(tableRow);
   console.log('working?????????',this.dailyTotal);
 }
+//=====================Render Header to Page=============
+function renderTableHeader(){
+  var table = document.getElementById('location-table');
+  var headerRow = document.createElement('tr');
+  var locationHeader = document.createElement('td');
+  locationHeader.textContent = 'Location';
+  headerRow.appendChild(locationHeader);
 
+
+  table.appendChild(headerRow);
+}
 
 //========================Oject Location Constructor=======================
 
@@ -82,6 +92,8 @@ StoreLocation.prototype.getCookieSales = function (){
 // StoreLocation.prototype.renderStoreLocation= renderStoreLocation;
 
 StoreLocation.prototype.renderLocationTable= renderLocationTable;
+
+renderTableHeader();
 
 //===================Constructed Locations========================
 
