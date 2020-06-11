@@ -8,29 +8,7 @@ function getRandomNumber(min,max) {
   //from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 }
 console.log('maybeeeeeeeee');
-//=======================Render Location to Page=================
 
-// function renderStoreLocation(){
-
-//   var parentUnorderedList = document.getElementById(this.id );
-//   // parentUnorderedList.appendChild(storeSales);
-
-//   for(var i = 0; i < openHourTimes.length; i++){
-
-//     var storeSales = document.createElement('li');
-//     storeSales.textContent = openHourTimes[i] + ' : ' + this.cookiesSold[i] + ' cookies';
-//     console.log('cookies: ',this.cookiesSold[0]);
-//     parentUnorderedList.appendChild(storeSales);
-
-//   }
-
-//   // var nameParagraph= document.getElementById(this.id );
-//   // nameParagraph.textContent= this.name;
-
-//   storeSales = document.createElement('li');
-//   storeSales.textContent = 'Total: ' + this.dailyTotal + ' cookies';
-//   parentUnorderedList.appendChild(storeSales);
-// }
 //========================Render Table to Page===================
 function renderLocationTable(){
   var table = document.getElementById('location-table');
@@ -80,17 +58,19 @@ function renderFooter(){
   locationFooter.textContent = 'Totals';
   footerRow.appendChild(locationFooter);
 
+  var totalSales = 0;
   for(var i = 0; i < openHourTimes.length; i++){
     var hourTotal = document.createElement('td');
     var hourlyTotal = 0;
     for(var j =0; j< allLocations.length; j++) {
       hourlyTotal += allLocations[j].cookiesSold[i];
+      totalSales += allLocations[j].cookiesSold[i];
       hourTotal.textContent= hourlyTotal;
       footerRow.appendChild(hourTotal);
     }
   }
   var cellDailyTotal = document.createElement('td');
-  cellDailyTotal.textContent = '';
+  cellDailyTotal.textContent = totalSales;
   footerRow.appendChild(cellDailyTotal);
 
   table.appendChild(footerRow);
@@ -118,8 +98,6 @@ StoreLocation.prototype.getCookieSales = function (){
     // console.log('Printed store',this.dailyTotal);
   }
 };
-
-// StoreLocation.prototype.renderStoreLocation= renderStoreLocation;
 
 StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
