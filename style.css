@@ -1,7 +1,52 @@
-body{
-  width: 960px;
+*{
+  max-width: 960px; 
+  margin: auto;
 }
 
+body{
+  background-color: rgb(19, 145, 103);
+  font-size: 20px;
+  text-align: center;
+}
+
+header > img:first-of-type{
+  width:9400px;
+}
+
+/* I'm trying to make all of these images a fixed width but it isn't working */
+
+/* section:first-of-type > img */
+img {
+  width: 240px;
+  height: 250px;
+  margin: auto;
+}
+
+h3{
+  
+  text-decoration: underline;
+}
+ul {
+  list-style-type: none;/*Found how to do this at https://www.bitdegree.org/learn/css-list-style#:~:text=It%20is%20possible%20to%20remove,bullets%20disappear%20from%20the%20list.&text=Note%3A%20to%20get%20rid%20of,margin%20and%20padding%20to%200.*/
+  /*  */
+  
+}
+.city{
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 24;
+}
+
+#family {
+  width: 340px;
+  height: 250px;
+  margin: auto;
+}
+#shirt {
+  width: 240px;
+  height: 250px;
+  margin: auto;
+}
 
 
 table {
