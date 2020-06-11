@@ -76,15 +76,18 @@ function renderHeader(){
 function renderFooter(){
   var table = document.getElementById('location-table');
   var footerRow = document.createElement('tr');
-  var locationfooter = document.createElement('td');
-  locationfooter.textContent = 'Totals';
-  footerRow.appendChild(locationfooter);
+  var locationFooter = document.createElement('td');
+  locationFooter.textContent = 'Totals';
+  footerRow.appendChild(locationFooter);
 
   for(var i = 0; i < openHourTimes.length; i++){
-
-    var hourRow = document.createElement('td');
-    hourRow.textContent= openHourTimes[i];
-    footerRow.appendChild(hourRow);
+    var hourTotal = document.createElement('td');
+    var hourlyTotal = 0;
+    for(var j =0; j< allLocations.length; j++) {
+      hourlyTotal += allLocations[j].cookiesSold[i];
+      hourTotal.textContent= hourlyTotal;
+      footerRow.appendChild(hourTotal);
+    }
   }
   var cellDailyTotal = document.createElement('td');
   cellDailyTotal.textContent = '';
@@ -129,6 +132,7 @@ var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
 var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
 var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
 
+var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];
 //=========================Invocations======================================
 renderHeader();
 
