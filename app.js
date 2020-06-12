@@ -40,7 +40,7 @@ function addLocationFromForm(eventLocation){
   newLocation.renderLocationTable();
   return newLocation;
 }
-
+// console.log('New location: ', newLocation);
 //====================================End Add New Location function=====================
 
 //========================Render Table to Page===================
@@ -118,10 +118,6 @@ function StoreLocation(name, minCustomers, maxCustomers,avgCookie){
   this.avgCookie = avgCookie;
   this.cookiesSold = [];
   this.dailyTotal = 0; //Allistair helped be figure out how to add the total
-
-  // var newLocation= new StoreLocation(this.name,this.minCustomers,maxCustomers,avgCookie);
-  // newLocation.getCookieSales();
-  // newLocation.renderLocationTable();
 }
 
 //===================GetCookieSales Method===========
@@ -141,45 +137,69 @@ StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
 //===================Constructed Locations========================
 
-// for(var i=0; i<allLocations.length; i++){
-//   var addALocation = new StoreLocation(name, minCustomers, maxCustomers, avgCookie)
+//============================Attempt to put data into an array and access it=====================
+//=======Created this array with known data from locations. I want to access this array, store that data in another array
+// that can be used to both construct and render my table.  Curently, I have an array that I populated. I want a loop to 
+//popluate that array for me.
+var locationData = [
+  ['Seattle', 23, 65, 6.3 ],
+  ['Tokyo', 3, 24, 1.2 ],
+  ['Dubai', 11, 38, 3.7],
+  ['Paris', 20, 38, 2.3 ],
+  ['Lima', 2, 16, 4.6]];
+
+
+// var allLocations= [];
+// for(var i=0; i < locationData.length; i++){
+//   // var newLocation = new Array;
+//   // for(var j=0; j < 4; j++){
+//   //   newLocation[i] = locationData[i][j];
+
+//   //   console.log('New Location:',newLocation);
+//   // }
+//   allLocations[i] = locationData[i];
+//   console.log('All locations; ',allLocations[i]);
+//   allLocations = new StoreLocation( allLocations[i]);
 // }
 
+// var allLocations =[locationData[0],locationData[1],locationData[2],locationData[3],locationData[4]];
 
 
+
+// console.log('this is the final array; ', allLocations);
+
+
+// allLocations= new StoreLocation(locationData[0]);
+
+// this.allLocations.push(newLocation);
+// this.cookiesSold.push(sales);
+//============save for later, trying something else
+// for(var i = 0; i < 5 ; i++){
+//   var allLocations = [];
+//   for(var j = 0; j< locationData.length; j++){
+
+//     allLocations += locationData[j][i];
+//   }
+//   allLocations = new StoreLocation();
+// }
+//============================================================End attempt, uncomment below to show table=============
+
+//============================How I did it before Thursday, result would have input below footer=======================
 var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
 var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
 var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
 var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
 var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
-
 var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];//I want to push input into this array
 //=========================Invocations======================================
 
 renderHeader();
 
-for(var i = 0; i < allLocations.length; i++){
-  var newLocation = this.allLocations[i];
+for(var ii = 0; ii < allLocations.length; ii++){
+  var newLocation = this.allLocations[ii];
   newLocation.getCookieSales();
   newLocation.renderLocationTable();
 }
-
-
-
-// seattleLocation.getCookieSales();
-// seattleLocation.renderLocationTable();
-
-// tokyoLocation.getCookieSales();
-// tokyoLocation.renderLocationTable();
-
-// dubaiLocation.getCookieSales();
-// dubaiLocation.renderLocationTable();
-
-// parisLocation.getCookieSales();
-// parisLocation.renderLocationTable();
-
-// limaLocation.getCookieSales();
-// limaLocation.renderLocationTable();
 
 renderFooter();
 console.log('Made it to the bottom');
