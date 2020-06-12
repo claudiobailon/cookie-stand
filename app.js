@@ -30,7 +30,7 @@ addLocationForm.addEventListener('submit', addLocationFromForm);
 //=======================Create Funtion that gathers input and adds it to constructor==============
 function addLocationFromForm(eventLocation){
   eventLocation.preventDefault();//=======Prevents page from refreshing
-  var name = eventLocation.target.name.value;//if this doesn't work try unique var 
+  var name = eventLocation.target.name.value;//if this doesn't work try unique var
   var minCustomers = eventLocation.target.minCustomers.value;
   var maxCustomers = eventLocation.target.maxCustomers.value;
   var avgCookie = eventLocation.target.avgCookie.value;
@@ -38,7 +38,10 @@ function addLocationFromForm(eventLocation){
   var newLocation = new StoreLocation(name, minCustomers, maxCustomers,avgCookie);
   newLocation.getCookieSales();
   newLocation.renderLocationTable();
+  return newLocation;
 }
+
+//====================================End Add New Location function=====================
 
 //========================Render Table to Page===================
 function renderLocationTable(){
@@ -116,6 +119,9 @@ function StoreLocation(name, minCustomers, maxCustomers,avgCookie){
   this.cookiesSold = [];
   this.dailyTotal = 0; //Allistair helped be figure out how to add the total
 
+  // var newLocation= new StoreLocation(this.name,this.minCustomers,maxCustomers,avgCookie);
+  // newLocation.getCookieSales();
+  // newLocation.renderLocationTable();
 }
 
 //===================GetCookieSales Method===========
@@ -135,30 +141,45 @@ StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
 //===================Constructed Locations========================
 
+// for(var i=0; i<allLocations.length; i++){
+//   var addALocation = new StoreLocation(name, minCustomers, maxCustomers, avgCookie)
+// }
+
+
+
 var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
 var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
 var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
 var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
 var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
 
-var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];
+var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];//I want to push input into this array
 //=========================Invocations======================================
+
 renderHeader();
 
-seattleLocation.getCookieSales();
-seattleLocation.renderLocationTable();
+for(var i = 0; i < allLocations.length; i++){
+  var newLocation = this.allLocations[i];
+  newLocation.getCookieSales();
+  newLocation.renderLocationTable();
+}
 
-tokyoLocation.getCookieSales();
-tokyoLocation.renderLocationTable();
 
-dubaiLocation.getCookieSales();
-dubaiLocation.renderLocationTable();
 
-parisLocation.getCookieSales();
-parisLocation.renderLocationTable();
+// seattleLocation.getCookieSales();
+// seattleLocation.renderLocationTable();
 
-limaLocation.getCookieSales();
-limaLocation.renderLocationTable();
+// tokyoLocation.getCookieSales();
+// tokyoLocation.renderLocationTable();
+
+// dubaiLocation.getCookieSales();
+// dubaiLocation.renderLocationTable();
+
+// parisLocation.getCookieSales();
+// parisLocation.renderLocationTable();
+
+// limaLocation.getCookieSales();
+// limaLocation.renderLocationTable();
 
 renderFooter();
 console.log('Made it to the bottom');
