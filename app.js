@@ -34,6 +34,7 @@ function addLocationFromForm(eventLocation){
   // var dailyTotal = 0;
 
   var newLocation = new StoreLocation(name, minCustomers, maxCustomers,avgCookie);
+  allLocations.push(newLocation);
   newLocation.getCookieSales();
   newLocation.renderLocationTable();
   return newLocation;
@@ -181,12 +182,26 @@ StoreLocation.prototype.renderLocationTable= renderLocationTable;
 //============================================================End attempt, uncomment below to show table=============
 
 //============================How I did it before Thursday, result would have input below footer=======================
+// var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
+// var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
+// var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
+// var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
+// var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
+// var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];//I want to push input into this array
 var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
 var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
 var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
 var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
 var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
-var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];//I want to push input into this array
+var allLocations = [];
+
+allLocations.push(seattleLocation);
+allLocations.push(tokyoLocation);
+allLocations.push(dubaiLocation);
+allLocations.push(parisLocation);
+allLocations.push(limaLocation);
+
+
 //=========================Invocations======================================
 
 renderHeader();
@@ -195,6 +210,7 @@ for(var ii = 0; ii < allLocations.length; ii++){
   var brandNewLocation = this.allLocations[ii];
   brandNewLocation.getCookieSales();
   brandNewLocation.renderLocationTable();
+  //  try pushing here
 }
 
 renderFooter();
