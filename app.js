@@ -14,14 +14,31 @@ function getRandomNumber(min,max) {
 //to make a new function.
 
 //These are what i need to get from the form and what i need to call
-//var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
+
+//
+// name, minCustomers, maxCustomers,avgCookie
+
 // seattleLocation.getCookieSales();
 // seattleLocation.renderLocationTable();
 
 
 
 //========================Add Event======================================
+var addLocationForm = document.getElementById('addLocation');
+addLocationForm.addEventListener('submit', addLocationFromForm);
 
+//=======================Create Funtion that gathers input and adds it to constructor==============
+function addLocationFromForm(eventLocation){
+  eventLocation.preventDefault();//=======Prevents page from refreshing
+  var name = eventLocation.target.name.value;//if this doesn't work try unique var 
+  var minCustomers = eventLocation.target.minCustomers.value;
+  var maxCustomers = eventLocation.target.maxCustomers.value;
+  var avgCookie = eventLocation.target.avgCookie.value;
+
+  var newLocation = new StoreLocation(name, minCustomers, maxCustomers,avgCookie);
+  newLocation.getCookieSales();
+  newLocation.renderLocationTable();
+}
 
 //========================Render Table to Page===================
 function renderLocationTable(){
