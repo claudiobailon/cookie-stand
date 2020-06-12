@@ -149,27 +149,28 @@ var locationData = [
   ['Lima', 2, 16, 4.6]];
 
 
-// var allLocations= [];
-// for(var i=0; i < locationData.length; i++){
-//   // var newLocation = new Array;
-//   // for(var j=0; j < 4; j++){
-//   //   newLocation[i] = locationData[i][j];
+var allLocations= [];
+var newLocation = [];
+for(var i=0; i < locationData.length; i++){
+  for(var j=0; j < 4; j++){
+    newLocation[i] = locationData[i][j];
 
-//   //   console.log('New Location:',newLocation);
-//   // }
-//   allLocations[i] = locationData[i];
-//   console.log('All locations; ',allLocations[i]);
-//   allLocations = new StoreLocation( allLocations[i]);
-// }
+    // console.log('New Location:',newLocation);
+  }
+  allLocations[i] = locationData[i];
+  // allLocations.push(newLocation);
+  console.log('All locations; ',allLocations[i]);
+  allLocations = new StoreLocation( allLocations[0]);
+}
 
-// var allLocations =[locationData[0],locationData[1],locationData[2],locationData[3],locationData[4]];
 
+// allLocations= new StoreLocation(locationData[0]);
 
 
 // console.log('this is the final array; ', allLocations);
 
+// allLocations =[locationData[0],locationData[1],locationData[2],locationData[3],locationData[4]];
 
-// allLocations= new StoreLocation(locationData[0]);
 
 // this.allLocations.push(newLocation);
 // this.cookiesSold.push(sales);
@@ -185,19 +186,19 @@ var locationData = [
 //============================================================End attempt, uncomment below to show table=============
 
 //============================How I did it before Thursday, result would have input below footer=======================
-var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
-var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
-var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
-var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
-var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
-var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];//I want to push input into this array
+// var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
+// var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
+// var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
+// var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
+// var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
+// var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];//I want to push input into this array
 //=========================Invocations======================================
 
 renderHeader();
 
 for(var ii = 0; ii < allLocations.length; ii++){
-  var newLocation = this.allLocations[ii];
-  newLocation.getCookieSales();
+  var brandNewLocation = this.allLocations[ii];
+  brandNewLocation.getCookieSales();
   newLocation.renderLocationTable();
 }
 
