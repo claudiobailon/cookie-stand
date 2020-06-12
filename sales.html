@@ -9,6 +9,31 @@
 
 <body>
   <h1>Sales Page</h1>
+<!-- ===================Insert an option to add a new location to the table=============== -->
+  <form id="addLocation">
+    <fieldset>
+      <legend>Add a Location</legend>
+      <p>Want to add data from a new location? Just add the data in this form and it will be added to the table!</p><br>
+      <!-- input data needed is name, minCustomers, maxCustomers,avgCookie -->
+
+      <label for "name">Location Name:</label><!--Asks for the location name-->
+      <input type="text" name="name"><br><!--Gathers input and assigns it's value to name-->
+
+      <label for "minCustomers">Minimum amount of customers per hour :</label>
+      <input type="text" name ="minCustomers"><br>
+
+      <label for "maxCustomers">Maximum amount of customers per hour:</label>
+      <input type="text" name ="maxCustomers"><br>
+
+      <label for "avgCookie">Average number of cookies sold per customer:</label>
+      <input type="text" name ="avgCookie"><br>
+
+      <button>Add Location!</button>
+     
+
+
+    </fieldset>
+  </form>
 
   <table id="location-table"></table><!--Demo helped me link table-->
 

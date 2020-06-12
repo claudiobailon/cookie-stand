@@ -7,7 +7,21 @@ function getRandomNumber(min,max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
   //from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 }
-console.log('maybeeeeeeeee');
+// console.log('maybeeeeeeeee');
+//=========================Plan for Event===============================
+
+//I have to create a form in html that i can collect data from and implement into my constructor
+//to make a new function.
+
+//These are what i need to get from the form and what i need to call
+//var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
+// seattleLocation.getCookieSales();
+// seattleLocation.renderLocationTable();
+
+
+
+//========================Add Event======================================
+
 
 //========================Render Table to Page===================
 function renderLocationTable(){
@@ -28,7 +42,7 @@ function renderLocationTable(){
   cellDailyTotal.textContent=this.dailyTotal;
   tableRow.appendChild(cellDailyTotal);
   table.appendChild(tableRow);
-  console.log('working?????????',this.dailyTotal);
+  // console.log('working?????????',this.dailyTotal);
 }
 //=====================Render Header to Page=============
 function renderHeader(){
@@ -130,4 +144,4 @@ limaLocation.getCookieSales();
 limaLocation.renderLocationTable();
 
 renderFooter();
-//console.log('Made it to the bottom');
+console.log('Made it to the bottom');
