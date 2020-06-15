@@ -21,28 +21,31 @@ function getRandomNumber(min,max) {
 // seattleLocation.getCookieSales();
 // seattleLocation.renderLocationTable();
 
+//========================Add Event======================================
+var addLocationForm = document.getElementById('addLocation');
+addLocationForm.addEventListener('submit', addLocationFromForm);
+// console.log('New location: ', newLocation);
 
 //=======================Create Funtion that gathers input and adds it to constructor==============
 function addLocationFromForm(eventLocation){
   eventLocation.preventDefault();//=======Prevents page from refreshing
   var name = eventLocation.target.name.value;//if this doesn't work try unique var
-  var minCustomers = eventLocation.target.minCustomers.value;
-  var maxCustomers = eventLocation.target.maxCustomers.value;
-  var avgCookie = eventLocation.target.avgCookie.value;
-
-  // var cookiesSold = []; // Possibly try to add these so dailyTotal is updated with new info?
-  // var dailyTotal = 0;
+  var minCustomers = parseInt(eventLocation.target.minCustomers.value);
+  var maxCustomers = parseInt(eventLocation.target.maxCustomers.value);
+  var avgCookie = parseInt(eventLocation.target.avgCookie.value);
 
   var newLocation = new StoreLocation(name, minCustomers, maxCustomers,avgCookie);
+
   allLocations.push(newLocation);
   newLocation.getCookieSales();
+
+  document.getElementById('location-table').deleteRow(-1);//https://www.w3schools.com/jsref/met_table_deleterow.asp
   newLocation.renderLocationTable();
-  return newLocation;
+  renderFooter();
+  document.getElementById('addLocation').reset(); //https://www.w3schools.com/jsref/met_form_reset.asp
+
+  // return newLocation;
 }
-//========================Add Event======================================
-var addLocationForm = document.getElementById('addLocation');
-addLocationForm.addEventListener('submit', addLocationFromForm);
-// console.log('New location: ', newLocation);
 //====================================End Add New Location function=====================
 
 
@@ -141,53 +144,6 @@ StoreLocation.prototype.renderLocationTable= renderLocationTable;
 
 //===================Constructed Locations========================
 
-//============================Attempt to put data into an array and access it=====================
-//=======Created this array with known data from locations. I want to access this array, store that data in another array
-// that can be used to both construct and render my table.  Curently, I have an array that I populated. I want a loop to
-//popluate that array for me.
-// var locationData = [
-//   ['Seattle', 23, 65, 6.3 ],
-//   ['Tokyo', 3, 24, 1.2 ],
-//   ['Dubai', 11, 38, 3.7],
-//   ['Paris', 20, 38, 2.3 ],
-//   ['Lima', 2, 16, 4.6]];
-
-
-// var allLocations= [];
-// var newLocation = [];
-// for(var i=0; i < locationData.length; i++){
-//   for(var j=0; j < 4; j++){
-//     newLocation[i] = locationData[i][j];
-
-//   // console.log('New Location:',newLocation);
-//   }
-//   allLocations[i] = locationData[i];
-//   // allLocations.push(newLocation);
-//   console.log('All locations; ',allLocations[i]);
-//   allLocations = new StoreLocation( allLocations[0]);
-// }
-
-// console.log('this is the final array; ', allLocations);
-
-
-//============save for later, trying something else
-// for(var i = 0; i < 5 ; i++){
-//   var allLocations = [];
-//   for(var j = 0; j< locationData.length; j++){
-
-//     allLocations += locationData[j][i];
-//   }
-//   allLocations = new StoreLocation();
-// }
-//============================================================End attempt, uncomment below to show table=============
-
-//============================How I did it before Thursday, result would have input below footer=======================
-// var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
-// var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
-// var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
-// var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
-// var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
-// var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];//I want to push input into this array
 var seattleLocation = new StoreLocation('Seattle', 23, 65, 6.3 );
 var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
 var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
