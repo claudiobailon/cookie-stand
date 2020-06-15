@@ -8,18 +8,6 @@ function getRandomNumber(min,max) {
   //from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 }
 // console.log('maybeeeeeeeee');
-//=========================Plan for Event===============================
-
-//I have to create a form in html that i can collect data from and implement into my constructor
-//to make a new function.
-
-//These are what i need to get from the form and what i need to call
-
-//
-// name, minCustomers, maxCustomers,avgCookie
-
-// seattleLocation.getCookieSales();
-// seattleLocation.renderLocationTable();
 
 //========================Add Event======================================
 var addLocationForm = document.getElementById('addLocation');
@@ -43,13 +31,7 @@ function addLocationFromForm(eventLocation){
   newLocation.renderLocationTable();
   renderFooter();
   document.getElementById('addLocation').reset(); //https://www.w3schools.com/jsref/met_form_reset.asp
-
-  // return newLocation;
 }
-//====================================End Add New Location function=====================
-
-
-
 //========================Render Table to Page===================
 function renderLocationTable(){
   var table = document.getElementById('location-table');
@@ -80,7 +62,6 @@ function renderHeader(){
   headerRow.appendChild(locationHeader);
 
   for(var i = 0; i < openHourTimes.length; i++){
-
     var hourRow = document.createElement('td');
     hourRow.textContent= openHourTimes[i];
     headerRow.appendChild(hourRow);
@@ -88,7 +69,6 @@ function renderHeader(){
   var cellDailyTotal = document.createElement('td');
   cellDailyTotal.textContent = 'Daily Location Total';
   headerRow.appendChild(cellDailyTotal);
-
   table.appendChild(headerRow);
 }
 //=====================Render Footer to Page=============
