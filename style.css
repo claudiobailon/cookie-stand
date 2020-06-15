@@ -48,7 +48,10 @@ ul {
   margin: auto;
 }
 
-
+/* =================================For Sales Page============= */
+fieldset{
+  text-align: center;
+}
 table {
   border: solid #201d64 1px;
   border-collapse: collapse;

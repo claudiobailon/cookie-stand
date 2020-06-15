@@ -7,7 +7,48 @@ function getRandomNumber(min,max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
   //from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 }
-console.log('maybeeeeeeeee');
+// console.log('maybeeeeeeeee');
+//=========================Plan for Event===============================
+
+//I have to create a form in html that i can collect data from and implement into my constructor
+//to make a new function.
+
+//These are what i need to get from the form and what i need to call
+
+//
+// name, minCustomers, maxCustomers,avgCookie
+
+// seattleLocation.getCookieSales();
+// seattleLocation.renderLocationTable();
+
+//========================Add Event======================================
+var addLocationForm = document.getElementById('addLocation');
+addLocationForm.addEventListener('submit', addLocationFromForm);
+// console.log('New location: ', newLocation);
+
+//=======================Create Funtion that gathers input and adds it to constructor==============
+function addLocationFromForm(eventLocation){
+  eventLocation.preventDefault();//=======Prevents page from refreshing
+  var name = eventLocation.target.name.value;//if this doesn't work try unique var
+  var minCustomers = parseInt(eventLocation.target.minCustomers.value);
+  var maxCustomers = parseInt(eventLocation.target.maxCustomers.value);
+  var avgCookie = parseInt(eventLocation.target.avgCookie.value);
+
+  var newLocation = new StoreLocation(name, minCustomers, maxCustomers,avgCookie);
+
+  allLocations.push(newLocation);
+  newLocation.getCookieSales();
+
+  document.getElementById('location-table').deleteRow(-1);//https://www.w3schools.com/jsref/met_table_deleterow.asp
+  newLocation.renderLocationTable();
+  renderFooter();
+  document.getElementById('addLocation').reset(); //https://www.w3schools.com/jsref/met_form_reset.asp
+
+  // return newLocation;
+}
+//====================================End Add New Location function=====================
+
+
 
 //========================Render Table to Page===================
 function renderLocationTable(){
@@ -28,7 +69,7 @@ function renderLocationTable(){
   cellDailyTotal.textContent=this.dailyTotal;
   tableRow.appendChild(cellDailyTotal);
   table.appendChild(tableRow);
-  console.log('working?????????',this.dailyTotal);
+  // console.log('working?????????',this.dailyTotal);
 }
 //=====================Render Header to Page=============
 function renderHeader(){
@@ -84,7 +125,6 @@ function StoreLocation(name, minCustomers, maxCustomers,avgCookie){
   this.avgCookie = avgCookie;
   this.cookiesSold = [];
   this.dailyTotal = 0; //Allistair helped be figure out how to add the total
-
 }
 
 //===================GetCookieSales Method===========
@@ -109,25 +149,25 @@ var tokyoLocation = new StoreLocation('Tokyo', 3, 24, 1.2 );
 var dubaiLocation = new StoreLocation('Dubai', 11, 38, 3.7 );
 var parisLocation = new StoreLocation('Paris', 20, 38, 2.3 );
 var limaLocation = new StoreLocation('Lima', 2, 16, 4.6 );
+var allLocations = [];
 
-var allLocations = [seattleLocation,tokyoLocation,dubaiLocation,parisLocation,limaLocation];
+allLocations.push(seattleLocation);
+allLocations.push(tokyoLocation);
+allLocations.push(dubaiLocation);
+allLocations.push(parisLocation);
+allLocations.push(limaLocation);
+
+
 //=========================Invocations======================================
+
 renderHeader();
 
-seattleLocation.getCookieSales();
-seattleLocation.renderLocationTable();
-
-tokyoLocation.getCookieSales();
-tokyoLocation.renderLocationTable();
-
-dubaiLocation.getCookieSales();
-dubaiLocation.renderLocationTable();
-
-parisLocation.getCookieSales();
-parisLocation.renderLocationTable();
-
-limaLocation.getCookieSales();
-limaLocation.renderLocationTable();
+for(var ii = 0; ii < allLocations.length; ii++){
+  var brandNewLocation = this.allLocations[ii];
+  brandNewLocation.getCookieSales();
+  brandNewLocation.renderLocationTable();
+  //  try pushing here
+}
 
 renderFooter();
-//console.log('Made it to the bottom');
+console.log('Made it to the bottom');
