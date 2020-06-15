@@ -7,11 +7,13 @@ body{
   background-color: rgb(19, 145, 103);
   font-size: 20px;
   text-align: center;
+  color: aliceblue;
 }
 
 header > img:first-of-type{
   width:9400px;
 }
+
 
 /* I'm trying to make all of these images a fixed width but it isn't working */
 
@@ -22,9 +24,19 @@ img {
   margin: auto;
 }
 
+h1{
+  font-family: 'Pacifico', cursive;
+  font-size: 60px;
+  color: rgb(128, 0, 0);
+}
+h2{
+  font-size: 30px;
+  color: navy;
+}
 h3{
-  
   text-decoration: underline;
+  font-size: 26px;
+  color:  lightblue;
 }
 ul {
   list-style-type: none;/*Found how to do this at https://www.bitdegree.org/learn/css-list-style#:~:text=It%20is%20possible%20to%20remove,bullets%20disappear%20from%20the%20list.&text=Note%3A%20to%20get%20rid%20of,margin%20and%20padding%20to%200.*/
@@ -35,6 +47,7 @@ ul {
   font-weight: bold;
   text-decoration: underline;
   font-size: 24;
+  color:lightblue
 }
 
 #family {
@@ -47,21 +60,32 @@ ul {
   height: 250px;
   margin: auto;
 }
-
+#intro > p {
+  font-family: Georgia, serif;
+  font-size: 24px;
+}
+#locations{
+  background-color:maroon;
+}
 /* =================================For Sales Page============= */
 fieldset{
   text-align: center;
 }
 table {
-  border: solid #201d64 1px;
+  border: solid #b4dadd 4px;
   border-collapse: collapse;
   margin: 20px;
   font-size: 24px;
-  color: rgb(16, 41, 41);
+  font-family: Helvetica, sans-serif;
+  background-color: rgb(13, 13, 77);
+  color: #b4dadd;
+  
 
 }
 th, td {
-  border: solid #201d64 1px;
+  border: solid #b4dadd  2px;
   padding: 10px;
 }
-
+#sales{
+  color:navy;
+}
